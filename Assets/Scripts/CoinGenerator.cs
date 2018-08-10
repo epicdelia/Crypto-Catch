@@ -1,26 +1,32 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ |  Class: Coin Generator 
+ |  Author:  Delia Lazarescu
+ |  Description: Generates infinite genereate infinite s for the player to jump onto
+ *===========================================================================*/
+using UnityEngine;
 using System.Collections;
 
 public class CoinGenerator : MonoBehaviour {
 
-	public ObjectPooler coinPool;
+    public ObjectPooler coinPool;
 
-	public float distanceBetweenCoins;
+    public float distanceBetweenCoins;
 
-	public void SpawnCoins (Vector3 startPosition )
-	{
-		GameObject coin1 = coinPool.GetPooledObject();
-		coin1.transform.position = startPosition;
-		coin1.SetActive(true);
+    public void SpawnCoins (Vector3 startPosition )
+    {
 
-		GameObject coin2 = coinPool.GetPooledObject();
-		coin2.transform.position = new Vector3(startPosition.x - distanceBetweenCoins, startPosition.y, startPosition.z);
-		coin2.SetActive(true);
+        GameObject coin1 = coinPool.GetPooledObject();
+        coin1.transform.position = startPosition;
+        coin1.SetActive(true);
 
-		GameObject coin3 = coinPool.GetPooledObject();
-		coin3.transform.position = new Vector3(startPosition.x + distanceBetweenCoins, startPosition.y, startPosition.z);
-		coin3.SetActive(true);
-	}
+        GameObject coin2 = coinPool.GetPooledObject();
+        coin2.transform.position = new Vector3(startPosition.x - distanceBetweenCoins, startPosition.y, startPosition.z);
+        coin2.SetActive(true);
+
+        GameObject coin3 = coinPool.GetPooledObject();
+        coin3.transform.position = new Vector3(startPosition.x + distanceBetweenCoins, startPosition.y, startPosition.z);
+        coin3.SetActive(true);
+    }
 }
 
 //public ObjectPooler[] coinPool;

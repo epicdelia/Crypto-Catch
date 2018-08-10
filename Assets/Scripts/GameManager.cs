@@ -1,5 +1,9 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿/*=============================================================================
+ |  Class: Game Manager 
+ |  Author:  Delia Lazarescu
+ |  Description: Handles the screens of the game and when to transition to them
+ *===========================================================================*/
+using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
@@ -35,19 +39,22 @@ public class GameManager : MonoBehaviour {
 
 		thePlayer.gameObject.SetActive(false);
 
-		//StartCoroutine ("RestartGameCo");
 	}
 
+   // used to restart game when player dies 
 	public void Reset()
-	{
+    {
+        //show player he died and give options 
 		theDeathScreen.gameObject.SetActive(false);
 
+        //destroy all remaining objects by deactivating 
 		platformList = FindObjectsOfType<PlatformDestroyer>();
 		for(int i = 0; i < platformList.Length; i++)
 		{
 			platformList[i].gameObject.SetActive(false);
 		}
 		
+        //return player to start and score to 0 
 		thePlayer.transform.position = playerStartPoint;
 		platformGenerator.position = platformStartPoint;
 		thePlayer.gameObject.SetActive(true);
@@ -56,23 +63,4 @@ public class GameManager : MonoBehaviour {
 		theScoreManager.scoreIncreasing = true;
 	}
 
-
-	/*public IEnumerator RestartGameCo()
-	{
-		theScoreManager.scoreIncreasing = false;
-		thePlayer.gameObject.SetActive(false);
-		yield return new WaitForSeconds(0.5f);
-		platformList = FindObjectsOfType<PlatformDestroyer>();
-		for(int i = 0; i < platformList.Length; i++)
-		{
-			platformList[i].gameObject.SetActive(false);
-		}
-
-		thePlayer.transform.position = playerStartPoint;
-		platformGenerator.position = platformStartPoint;
-		thePlayer.gameObject.SetActive(true);
-
-		theScoreManager.scoreCount = 0;
-		theScoreManager.scoreIncreasing = true;
-	}*/
 }

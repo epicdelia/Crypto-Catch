@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ |  Class: Powerup Manager 
+ |  Author:  Delia Lazarescu
+ |  Description: This class controls the power ups
+ *===========================================================================*/
+using UnityEngine;
 using System.Collections;
-
-/** 
-Class for controlling the player, Satoshi. 
-**/
 
 public class PowerupManager : MonoBehaviour {
 
@@ -22,12 +23,15 @@ public class PowerupManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        //initialize variables 
 		theScoreManager = FindObjectOfType<ScoreManager>();
 		thePlatformGenerator = FindObjectOfType<PlatformGenerator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
+        //if player currently has power up 
 		if(powerupActive)
 		{
 			powerupLengthCounter -= Time.deltaTime;
@@ -42,8 +46,6 @@ public class PowerupManager : MonoBehaviour {
 			{
 				thePlatformGenerator.randomSpikeThreshold = 0f;
 			}
-
-
 
 			if(powerupLengthCounter <= 0)
 			{

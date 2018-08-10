@@ -1,4 +1,9 @@
-﻿using UnityEngine;
+﻿/*=============================================================================
+ |  Class: Powerups
+ |  Author:  Delia Lazarescu
+ |  Description: Class to control the player power ups
+ *===========================================================================*/
+using UnityEngine;
 using System.Collections;
 
 public class Powerups : MonoBehaviour {
